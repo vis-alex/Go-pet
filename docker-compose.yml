@@ -1,0 +1,18 @@
+version: '3.9'
+
+services:
+
+  go:
+    build:
+      context: ./
+      dockerfile: ./docker/go/Dockerfile
+      args:
+        XDEBUG_MODE: 0
+    container_name: go
+    restart: always
+    # stdin_open: true # docker run -i
+    tty: true        # docker run -t
+    ports:
+      - "8989:8989"
+    volumes:
+      - ./app:/app
